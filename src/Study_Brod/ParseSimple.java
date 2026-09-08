@@ -1,4 +1,4 @@
-package Brodnikov;
+package Study_Brod;
 
 import java.util.Arrays;
 

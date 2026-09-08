@@ -1,5 +1,6 @@
-package Brodnikov;
+package Study_Brod;
 
+import fileworks.DataExport;
 import fileworks.DataImport;
 
 public class ParseFile {
@@ -9,7 +10,7 @@ public class ParseFile {
 
         /*while (di.hasNext()){
             System.out.println(di.readLine());
-        }*/
+        }
 
         String name;
         String continent;
@@ -26,13 +27,37 @@ public class ParseFile {
 
         Country oneCountry = new Country(name, continent, population, avgAge);
 
-        /*System.out.println(name);
+        System.out.println(name);
         System.out.println(continent);
         System.out.println(population);
         System.out.println(avgAge);*/
 
         //Country czechia = new Country("Czech Republic", "Europe", 10_000_000, 85);
 
+        DataExport de = new DataExport("output.txt");
+
+        while(di.hasNext()){
+
+            String line = di.readLine();
+            String[] tokens = line.split(";");
+
+            String name = tokens[0];
+            String continent = tokens[1];
+            long population = Long.parseLong(tokens[2]);
+            double avgAge = Double.parseDouble(tokens[3]);
+
+            Country onecountry = new Country(name, continent, population, avgAge);
+
+            System.out.println(onecountry);
+
+            if(onecountry.continent.equals("Europe")) {
+                de.writeLine(onecountry.toString());
+            }
+
+        }
+
+        de.finishExport();
+        di.finishImport();
 
     }
 }

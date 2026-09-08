@@ -1,4 +1,4 @@
-package Brodnikov;
+package Study_Brod;
 
 public class Country {
     String name, continent;
