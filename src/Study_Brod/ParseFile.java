@@ -34,7 +34,7 @@ public class ParseFile {
 
         //Country czechia = new Country("Czech Republic", "Europe", 10_000_000, 85);
 
-        DataExport de = new DataExport("output.txt");
+        /*DataExport de = new DataExport("output.txt");
 
         while(di.hasNext()){
 
@@ -54,9 +54,41 @@ public class ParseFile {
                 de.writeLine(onecountry.toString());
             }
 
+        }*/
+
+        String nameMaxAvgAge = "";
+        double maxAvgAge = 0;
+        String nameMinPopulation = "";
+        long minPopulation = 0;
+
+        while(di.hasNext()){
+
+            String line = di.readLine();
+            String[] tokens = line.split(";");
+
+            String name = tokens[0];
+            long population = Long.parseLong(tokens[2]);
+            double avgAge = Double.parseDouble(tokens[3]);
+
+            if (maxAvgAge<avgAge) {
+                nameMaxAvgAge = name;
+                maxAvgAge = avgAge;
+            }
+            if (minPopulation>population){
+                nameMinPopulation = name;
+                minPopulation = population;
+            }
+            else if (minPopulation==0) {
+                minPopulation = population;
+            }
         }
 
-        de.finishExport();
+        System.out.println(nameMinPopulation);
+        System.out.println(minPopulation);
+        System.out.println(nameMaxAvgAge);
+        System.out.println(maxAvgAge);
+
+        //de.finishExport();
         di.finishImport();
 
     }
