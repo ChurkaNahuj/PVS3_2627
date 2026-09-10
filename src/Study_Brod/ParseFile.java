@@ -34,6 +34,8 @@ public class ParseFile {
 
         //Country czechia = new Country("Czech Republic", "Europe", 10_000_000, 85);
 
+
+        //тут крч код, чтоб сортировать все это говно по Европейскому континенту
         /*DataExport de = new DataExport("output.txt");
 
         while(di.hasNext()){
